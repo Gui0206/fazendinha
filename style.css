@@ -1,0 +1,376 @@
+/* style.css */
+
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* DEFINIÇÃO DE FONTE */
+body {
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+/* ---------- CÉU (FICA POR TRÁS DE TUDO) ---------- */
+.sky {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  background: linear-gradient(to bottom, #87ceeb, #a0d8f1);
+  overflow: hidden;
+  z-index: -1; /* Agora o céu fica atrás de todos */
+}
+
+/* Sol dentro do céu */
+.sun {
+  position: absolute;
+  top: 10%;
+  left: 80%;
+  width: 100px;
+  height: 100px;
+  background: #FFD700;
+  border-radius: 50%;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+  animation: sunRotate 10s linear infinite;
+}
+
+/* Nuvens dentro do céu */
+.cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.9;
+  filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.1));
+}
+
+.cloud1 {
+  width: 120px;
+  height: 60px;
+  top: 15%;
+  left: -150px;
+  animation: cloudMove 30s linear infinite;
+}
+.cloud1::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  width: 80px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50%;
+}
+.cloud1::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 60px;
+  width: 100px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.cloud2 {
+  width: 90px;
+  height: 45px;
+  top: 35%;
+  left: -200px;
+  animation: cloudMove 25s linear infinite;
+}
+.cloud2::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 15px;
+  width: 60px;
+  height: 45px;
+  background: #fff;
+  border-radius: 50%;
+}
+.cloud2::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 45px;
+  width: 80px;
+  height: 45px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.cloud3 {
+  width: 100px;
+  height: 50px;
+  top: 5%;
+  left: -250px;
+  animation: cloudMove 35s linear infinite;
+}
+.cloud3::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  width: 70px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+}
+.cloud3::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50px;
+  width: 90px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* Animação das nuvens */
+@keyframes cloudMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(150vw);
+  }
+}
+
+/* Animação do sol girando */
+@keyframes sunRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- CHÃO (ACIMA DO CÉU) ---------- */
+.ground {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  background: #7BC86C;
+  overflow: hidden;
+  z-index: 1; /* Chão acima do céu */
+}
+
+/* Grama (parte do chão) */
+.grass {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+  background: #5FA151;
+}
+
+/* ---------- CERCADO (ACIMA DAS VACAS) ---------- */
+.fence {
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+  width: 90%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  z-index: 4; /* Cercado acima das vacas */
+}
+.post {
+  width: 20px;
+  height: 120px;
+  background: #F5F5F5;
+  margin: 0 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+.rail {
+  flex: 1;
+  height: 20px;
+  background: #F5F5F5;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ---------- CELEIRO (ATRÁS DAS VACAS) ---------- */
+.barn {
+  position: absolute;
+  bottom: 15%;
+  left: 60%;
+  width: 200px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1; /* Celeiro atrás das vacas */
+}
+.roof {
+  width: 0;
+  height: 0;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  border-bottom: 80px solid #D32F2F;
+  position: relative;
+  top: 7px;
+}
+.barn-body {
+  width: 200px;
+  height: 140px;
+  background: #E53935;
+  border: 4px solid #B71C1C;
+  position: relative;
+}
+.barn-door {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 80px;
+  background: #B71C1C;
+  border: 3px solid #880E4F;
+}
+.barn-door::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #FFD54F;
+  border-radius: 50%;
+}
+.barn-window {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: #FFF176;
+  border: 3px solid #F9A825;
+}
+.barn-window::before,
+.barn-window::after {
+  content: '';
+  position: absolute;
+  background: #F9A825;
+}
+.barn-window::before {
+  width: 3px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.barn-window::after {
+  height: 3px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ---------- ÁRVORE (ATRÁS DAS VACAS) ---------- */
+.tree {
+  position: absolute;
+  bottom: 15%;
+  left: 20%;
+  width: 80px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1; /* Árvore atrás das vacas */
+}
+.trunk {
+  width: 20px;
+  height: 60px;
+  background: #8D6E63;
+  border-radius: 4px;
+  position: relative;
+  top: 120px;
+}
+.leaves {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  background: #388E3C;
+  border-radius: 50%;
+  box-shadow: 0 0 0 20px #66BB6A, 0 0 0 40px #81C784;
+  animation: leavesSway 4s ease-in-out infinite alternate;
+}
+
+/* Animação de leve balanço das folhas */
+@keyframes leavesSway {
+  from {
+    transform: translateX(-50%) rotate(-2deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(2deg);
+  }
+}
+
+/* ---------- VACAS REAIS (À FRENTE DE CELEIRO E ÁRVORE) ---------- */
+.cow {
+  position: absolute;
+  width: 150px;
+  animation: cowWalk 3s ease-in-out infinite alternate;
+  z-index: 2; /* Vacas acima do chão e acima de celeiro/árvore */
+}
+
+/* Animação de "andar" leve da vaca (movimento vertical) */
+@keyframes cowWalk {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+/* POSIÇÕES INDIVIDUAIS PARA CADA UMA DAS 38 VACAS (BEM ESPALHADAS VERTICALMENTE, SEM PASSAR DE 70%) */
+.cow.cow1   { left:  2%;   bottom: 10%; animation-delay:   0s; }
+.cow.cow2   { left:  8%;   bottom: 22%; animation-delay:  0.2s; }
+.cow.cow3   { left: 14%;   bottom: 34%; animation-delay:  0.5s; }
+.cow.cow4   { left: 22%;   bottom: 46%; animation-delay:  0.1s; }
+.cow.cow5   { left: 28%;   bottom: 58%; animation-delay:  0.4s; }
+.cow.cow6   { left: 35%;   bottom: 15%; animation-delay:  0.3s; }
+.cow.cow7   { left: 42%;   bottom: 27%; animation-delay:  0.6s; }
+.cow.cow8   { left: 50%;   bottom: 39%; animation-delay:  0.2s; }
+.cow.cow9   { left: 58%;   bottom: 51%; animation-delay:  0.5s; }
+.cow.cow10  { left: 64%;   bottom: 27%; animation-delay:  0.1s; }
+.cow.cow11  { left: 70%;   bottom: 18%; animation-delay:  0.4s; }
+.cow.cow12  { left: 76%;   bottom: 30%; animation-delay:  0.3s; }
+.cow.cow13  { left: 82%;   bottom: 42%; animation-delay:  0.6s; }
+.cow.cow14  { left: 88%;   bottom: 54%; animation-delay:  0.2s; }
+.cow.cow15  { left: 94%;   bottom: 66%; animation-delay:  0.5s; }
+.cow.cow16  { left: 12%;   bottom: 28%; animation-delay:  0.1s; }
+.cow.cow17  { left: 30%;   bottom: 40%; animation-delay:  0.3s; }
+.cow.cow18  { left: 46%;   bottom: 52%; animation-delay:  0.5s; }
+.cow.cow19  { left: 61%;   bottom: 64%; animation-delay:  0.2s; }
+.cow.cow20  { left: 85%;   bottom: 20%; animation-delay:  0.4s; }
+
+.cow.cow21  { left:  5%;   bottom: 12%; animation-delay:  0.1s; }
+.cow.cow22  { left: 15%;   bottom: 24%; animation-delay:  0.3s; }
+.cow.cow23  { left: 23%;   bottom: 36%; animation-delay:  0.6s; }
+.cow.cow24  { left: 31%;   bottom: 48%; animation-delay:  0.2s; }
+.cow.cow25  { left: 39%;   bottom: 60%; animation-delay:  0.5s; }
+.cow.cow26  { left: 47%;   bottom: 18%; animation-delay:  0.3s; }
+.cow.cow27  { left: 55%;   bottom: 30%; animation-delay:  0.1s; }
+.cow.cow28  { left: 63%;   bottom: 42%; animation-delay:  0.4s; }
+.cow.cow29  { left: 71%;   bottom: 54%; animation-delay:  0.6s; }
+.cow.cow30  { left: 79%;   bottom: 16%; animation-delay:  0.2s; }
+.cow.cow31  { left: 87%;   bottom: 28%; animation-delay:  0.5s; }
+.cow.cow32  { left: 95%;   bottom: 40%; animation-delay:  0.3s; }
+.cow.cow33  { left: 18%;   bottom: 50%; animation-delay:  0.1s; }
+.cow.cow34  { left: 26%;   bottom: 62%; animation-delay:  0.4s; }
+.cow.cow35  { left: 34%;   bottom: 14%; animation-delay:  0.6s; }
+.cow.cow36  { left: 43%;   bottom: 26%; animation-delay:  0.2s; }
+.cow.cow37  { left: 51%;   bottom: 38%; animation-delay:  0.5s; }
+.cow.cow38  { left: 59%;   bottom: 50%; animation-delay:  0.3s; }
